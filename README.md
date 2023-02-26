@@ -11,7 +11,7 @@ npm i
 ```
 
 ## How to use?
-- Start and type https://localhost:3000 on your browser!
+- Start and type http://localhost:3000 on your browser!
 - Click "อัพโหลด"
 - Click "สมัครเข้าใช้งาน"
 - Register Key is "2121" // check your config
