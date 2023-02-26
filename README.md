@@ -14,7 +14,7 @@ npm i
 - Start and type https://localhost:3000 on your browser!
 - Click "อัพโหลด"
 - Click "สมัครเข้าใช้งาน"
-- Register Key is "helloworld@23#AB" // check your config
+- Register Key is "2121" // check your config
 - I know u can do it more bye i will sleep 💤
 
 ## Require
