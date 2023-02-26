@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="แหล่งเก็บความลับของเจ้าเอลฟ์" name="description">
+    <meta content="ellafern,ellafern cdn,ellarfen cloud" name="keywords">
+    <meta content="CDN | ellafern" property="og:title">
+    <meta content="https://cdn.ellafern.net/" property="og:url">
+    <meta content="แหล่งเก็บความลับของเจ้าเอลฟ์" property="og:description">
+    <meta content="website" property="og:type">
+    <meta content="https://cdn.discordapp.com/attachments/803211285797535755/1029237353824391218/meta.png"
+        property="og:image">
+    <link rel="apple-touch-icon" sizes="57x57" href="/public/assets/img/ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/public/assets/img/ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/public/assets/img/ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/public/assets/img/ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/public/assets/img/ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/public/assets/img/ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/public/assets/img/ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/public/assets/img/ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/assets/img/ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/public/assets/img/ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/img/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/public/assets/img/ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/assets/img/ico/favicon-16x16.png">
+    <link rel="manifest" href="/public/assets/img/ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/public/assets/img/ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/public/assets/main.css">
+    <link rel="stylesheet" href="/public/assets/square_particle.css">
+    <title>ELF - CDN</title>
+</head>
+
+<body>
+    <div id="modal" style="display: none;"
+        class="fixed z-20 min-h-screen w-full flex justify-center items-center backdrop-blur-sm bg-black/90">
+        <div class="text-white text-center">
+            <span class="text-xs">กรุณาเก็บลิ้งก์นี้ไว้เป็นอย่างดี!</span><br><a href="#" id="textmodal"
+                target="_blank">Loading...</a>
+            <div class="mt-2">
+                <button class="border-dashed border-2 border-white/20 py-1 px-3 rounded-xl"
+                    onclick="copy_()">คัดลอกและออก</button>
+            </div>
+        </div>
+    </div>
+    <main
+        class="min-h-screen w-full flex justify-center items-center  bg-gradient-to-t from-purple-900/10 to-zinc-900 text-white">
+        <form class="grid justify-center text-center gap-2 z-[1] p-4 rounded-xl border-dashed border-2 border-white/5">
+            <h1 class="text-transparent font-bold text-3xl bg-gradient-to-r from-purple-700 to-pink-500 bg-clip-text">
+                อัพโหลด!
+            </h1>
+            <p class="font-thin -mt-2 text-sm">#ไฟล์ไม่เกิน 500MB</p>
+            <input type="file" id="file" name="file"
+                class="text-sm rounded-xl bg-black/10 transition-all duration-300 text-whtie hover:bg-black/20 focus:bg-black20 p-2 outline-none"
+                placeholder="ไอดีผู้ใช้">
+            <input type="password" id="key" name="key"
+                class="text-sm rounded-xl bg-black/10 transition-all duration-300 text-whtie hover:bg-black/20 focus:bg-black20 p-2 outline-none"
+                placeholder="KEY (หากต้องการตั้ง)">
+            <p class="text-orange-400 text-xs" style="display: none;" id="log">ผิดพลาด</p>
+            <button type="button" onclick="upload(this)"
+                class="shadow-xl bg-gradient-to-r from-purple-600 to-pink-400 text-white rounded-xl py-1 px-5 transition-all duration-200 hover:scale-105 disabled:hover:scale-100">
+                อัพโหลด
+            </button>
+        </form>
+        <div style="width: 100vw; height: 100vh;" class="z-0 fixed">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </main>
+    <nav class="fixed top-2 right-2 text-white"><a href="/logout">ออกจากระบบ</a></nav>
+    <footer class="fixed bottom-2 left-2 text-white"><a href="https://github.com/ayameemilia" target="_blank">©
+            Ellafern.net</a></footer>
+</body>
+<script src="/public/assets/script.js"></script>
+<script>
+    const modal = document.getElementById("modal")
+    const textmodal = document.getElementById("textmodal")
+    const element = document.getElementById("log")
+    let clip = ""
+
+    function copy_() {
+        navigator.clipboard.writeText(clip);
+
+        alert("คัดลอกแล้ว!: " + clip);
+        element.style.display = "none"
+        modal.style.display = "none"
+    }
+
+    function upload(e) {
+        if (!document.getElementById("file").files[0] || !document.getElementById("file").value) return;
+        e.disabled = true
+        element.style.display = "block"
+        element.innerText = "กำลังสร้างลิ้งก์..."
+
+        let myHeaders = new Headers();
+        myHeaders.append("token", getCookie("token"));
+
+        let formdata = new FormData();
+        formdata.append("file", document.getElementById("file").files[0], document.getElementById("file").value);
+        formdata.append("key", document.getElementById("key").value === "" ? false : document.getElementById("key").value);
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata
+        };
+
+        fetch("/file/upload", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                e.disabled = false
+                result = JSON.parse(result)
+                if (result.code === 1) {
+                    modal.style.display = "flex"
+                    textmodal.innerText = "https://" + result.url
+                    textmodal.href = "https://" + result.url
+                    clip = "https://" + result.url
+                }
+                else {
+                    element.style.display = "block"
+                    element.innerText = result.msg
+                }
+            })
+            .catch(error => console.log('error', error));
+    }
+</script>
+
+</html>

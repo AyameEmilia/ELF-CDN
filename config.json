@@ -1,0 +1,7 @@
+{
+    "port": 3000,
+    "key": "helloworld@23#AB",
+    "privateKey": "2121",
+    "domain": "localhost",
+    "-- comment -- ": "มีแก้ไขอีกในไฟล์ public!"
+}

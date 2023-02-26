@@ -1,0 +1,54 @@
+@font-face {
+    font-family: "LINE Seed";
+    src: url("/public/assets/fonts/LINESeedSansTH_W_Th.woff");
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: "LINE Seed";
+    src: url("/public/assets/fonts/LINESeedSansTH_W_Rg.woff");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "LINE Seed";
+    src: url("/public/assets/fonts/LINESeedSansTH_W_Bd.woff");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "LINE Seed";
+    src: url("/public/assets/fonts/LINESeedSansTH_W_XBd.woff");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "LINE Seed";
+    src: url("/public/assets/fonts/LINESeedSansTH_W_He.woff");
+    font-weight: 800;
+  }
+  
+  body {
+    overflow: overlay;
+    background-color: black;
+    font-family: "LINE Seed", sans-serif;
+  }
+  
+  *::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+    height: 6px;
+  }
+  
+  *::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background-color: #00000000;
+  }
+  
+  *::-webkit-scrollbar-track-piece {
+    background-color: #00000000;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #00000040;
+    border-radius: 24px;
+  }

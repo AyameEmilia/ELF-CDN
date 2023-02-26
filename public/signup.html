@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="แหล่งเก็บความลับของเจ้าเอลฟ์" name="description">
+    <meta content="ellafern,ellafern cdn,ellarfen cloud" name="keywords">
+    <meta content="CDN | ellafern" property="og:title">
+    <meta content="https://cdn.ellafern.net/" property="og:url">
+    <meta content="แหล่งเก็บความลับของเจ้าเอลฟ์" property="og:description">
+    <meta content="website" property="og:type">
+    <meta content="https://cdn.discordapp.com/attachments/803211285797535755/1029237353824391218/meta.png"
+        property="og:image">
+    <link rel="apple-touch-icon" sizes="57x57" href="/public/assets/img/ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/public/assets/img/ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/public/assets/img/ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/public/assets/img/ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/public/assets/img/ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/public/assets/img/ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/public/assets/img/ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/public/assets/img/ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/assets/img/ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/public/assets/img/ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/img/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/public/assets/img/ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/assets/img/ico/favicon-16x16.png">
+    <link rel="manifest" href="/public/assets/img/ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/public/assets/img/ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/public/assets/main.css">
+    <link rel="stylesheet" href="/public/assets/square_particle.css">
+    <title>ELF - CDN</title>
+</head>
+
+<body>
+    <main
+        class="min-h-screen w-full flex justify-center items-center  bg-gradient-to-t from-purple-900/10 to-zinc-900 text-white">
+        <div class="grid justify-center text-center gap-2 z-[1] p-4 rounded-xl border-dashed border-2 border-white/5">
+            <h1 class="text-transparent font-bold text-3xl bg-gradient-to-r from-purple-700 to-pink-500 bg-clip-text">
+                สมัครสมาชิก!
+            </h1>
+            <p class="text-red-500 text-xs" style="display: none;" id="warn">ผิดพลาด</p>
+            <input type="text" id="username"
+                class="text-sm rounded-xl bg-black/10 transition-all duration-300 text-whtie hover:bg-black/20 focus:bg-black20 p-2 outline-none"
+                placeholder="ไอดีผู้ใช้">
+            <input type="password" id="password"
+                class="text-sm rounded-xl bg-black/10 transition-all duration-300 text-whtie hover:bg-black/20 focus:bg-black20 p-2 outline-none"
+                placeholder="รหัสผ่าน">
+            <input type="password" id="cfpassword"
+                class="text-sm rounded-xl bg-black/10 transition-all duration-300 text-whtie hover:bg-black/20 focus:bg-black20 p-2 outline-none"
+                placeholder="รหัสผ่านอีกครั้ง">
+            <input type="password" id="key"
+                class="text-sm rounded-xl bg-black/10 transition-all duration-300 text-whtie hover:bg-black/20 focus:bg-black20 p-2 outline-none"
+                placeholder="Register Key">
+            <button
+                class="shadow-xl bg-gradient-to-r from-purple-600 to-pink-400 text-white rounded-xl py-1 px-5 transition-all duration-200 hover:scale-105"
+                onclick="register()">
+                สมัคร
+            </button>
+            <div class="flex justify-start">
+                <a class="text-xs opacity-30" href="/signin">
+                    เข้าสู่ระบบ
+                </a>
+            </div>
+        </div>
+        <div style="width: 100vw; height: 100vh;" class="z-0 fixed">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </main>
+    <footer class="fixed bottom-2 left-2 text-white"><a href="https://github.com/ayameemilia" target="_blank">©
+            Ellafern.net</a></footer>
+</body>
+<script src="/public/assets/script.js"></script>
+<script>
+    function register() {
+
+        const element = document.getElementById("warn")
+        if (document.getElementById("cfpassword").value !== document.getElementById("password").value) {
+            element.style.display = "block"
+            return element.innerText = "รหัสผ่านไม่ตรงกัน"
+        }
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        let raw = JSON.stringify({
+            "username": document.getElementById("username").value,
+            "password": document.getElementById("password").value,
+            privateKey: document.getElementById("key").value
+        });
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+        };
+
+        fetch("/api/v1/signup", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                result = JSON.parse(result)
+                if (result.code === 1) {
+                    setCookie("token", result.token, 1)
+                    return window.location.replace("/signin")
+                }
+                else {
+                    element.style.display = "block"
+                    element.innerText = result.msg
+                }
+            })
+            .catch(error => console.log('error', error));
+    }
+</script>
+
+</html>
